@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Welcome to Sign System</title>
+        <link href="/static/inc/style.css" rel="stylesheet" type="text/css">
+        <script language="javascript" src="/static/inc/function.js" ></script>
+        <script language="javascript" src="/static/inc/time.js" ></script>
+        <script type="text/javascript" src="/static/inc/build/yahoo/yahoo-min.js" ></script>
+        <script type="text/javascript" src="/static/inc/build/event/event-min.js" ></script>
+        <script type="text/javascript" src="/static/inc/build/dom/dom-min.js"></script>
+        <script type="text/javascript" src="/static/inc/build/dragdrop/dragdrop-debug.js" ></script>
+        <script type="text/javascript" src="/static/inc/build/animation/animation-min.js"></script>
+        <script language="javascript">
+            YAHOO.example.DDApp = function() {
+                var dd;
+                return {
+                    init: function() {
+                        dd= new YAHOO.util.DD("divbox");
+                    }
+                }
+            }();
+            YAHOO.util.Event.onDOMReady(YAHOO.example.DDApp.init);
+        </script>
+    </head>
+
+    <body bottommargin="0" >
+        <div id="bgdiv" class="bgdiv"></div>
+        <table border="0" cellpadding="0" cellspacing="0" class="block" id="divbox" style="position:absolute;display:none;z-index:2000;">
+            <tr>
+                <td colspan="2" class="block-title" id="divtitle" style="float:left;font-size: 12px;">&nbsp;</td>
+                <td align="right"><img src="/static/images/close3.gif" style="cursor:pointer" width="20" height="20" onClick="disdivbox();" >&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="1057" colspan="3" class="block-body"> <iframe src='' id="contentframes" name="contentframes" frameborder='0'></iframe></td>
+            </tr>
+        </table>
+        <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+                <td height="90"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td width="46%" height="60" background="/static/images/top.jpg"><img src="/static/images/main-bg.png" width="500" height="60"></td>
+                            <td width="54%" align="right" background="/static/images/top.jpg">&nbsp;<img src="/static/images/course.png" width="70" height="50" style="cursor:pointer;" onClick="goiframes('/sc/course');">&nbsp;&nbsp;<img src="/static/images/term.png" width="70" height="50" style="cursor:pointer;" onClick="goiframes('/sc/term');">&nbsp;&nbsp;<img src="/static/images/selectcourse.png" width="70" height="50" style="cursor:pointer;"  onClick="goiframes('/sc');">&nbsp;&nbsp;<img src="/static/images/call.png" width="70" height="50" style="cursor:pointer;" onClick="goiframes('/rollcall/getstulist');">&nbsp;&nbsp;<img src="/static/images/exit.gif" width="70" height="50" style="cursor:pointer;" onClick="location.href='/user/logout'">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td height="30" colspan="2" valign="middle" background="/static/images/por_bkg.gif" ><table width="100%" border="0" cellpadding="0" cellspacing="0">
+                              <tr>
+                                <td width="14%" ><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                  <tr>
+                                      <td width="18%" class="bfont">Welcome</td>
+                                  </tr>
+                                </table></td>
+                                <td width="28%" align="right" class="bfont" > </td>
+                              </tr>
+                            </table></td>
+                        </tr>
+                    </table></td>
+            </tr>
+            <tr>
+                <td><table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                          <td valign="top"><iframe src="/rollcall/getstulist"  height="100%" width="100%"  name="mainiframes" id="mainiframes"  frameborder="0" scrolling="auto"></iframe></td>
+                        </tr>
+                    </table></td>
+            </tr>
+        </table>
+    </body>
+</html>

@@ -1,0 +1,96 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="inc/style.css" rel="stylesheet" type="text/css" />
+        <script language="javascript" src="inc/function.js" ></script>
+        <script language="javascript">
+            function changedate(dateid)
+            {
+                url="/rollcall/stusignlist/{{scid}}/"+dateid;
+                gourl(url);
+            }
+
+            function del()
+            {
+                if (confirm("delete confirm?"))
+                {
+                    calldateid=getobject("calldateid").value;
+                    url="/rollcall/delstusign/{{scid}}/"+calldateid;
+                    gourl(url);
+                }
+            }
+
+            function changestate(callrecid)
+            {
+                if (confirm('change confirm?')){
+                    url="/rollcall/changestusign/"+callrecid;
+                    gourl(url);
+                }
+            }
+        </script>
+        <title>无标题文档</title>
+        <style type="text/css">
+            body {
+                margin-left: 2px;
+                margin-top: 2px;
+                margin-right: 2px;
+                margin-bottom: 0px;
+                font-family: "宋体";
+                font-size: 12px;
+            }
+        </style>
+    </head>
+
+    <body style="overflow-y:auto;overflow-x:hidden; overflow-y:auto" >
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="borderall" onClick="disbatbox();">
+      <tr>
+        <td height="20" colspan="3" background="images/tab.jpg"><img src="images/hisico.png" width="14" height="16" align="absmiddle">History</td>
+      </tr>
+      <tr>
+        <td width="9" background="images/tab2.jpg">&nbsp;</td>
+        <td class="borderall"><table  width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF">
+          <tr>
+            <td colspan="5" background="images/backt.jpg"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td width="527" height="25">Date：
+                  <select name="calldateid" class="inputbox1" id="calldateid" onchange="changedate(this.value)">
+                    {% if calldateid == 0 %}
+                    <option value="0">select a date</option>
+                    {% endif %}
+                    {% for calldate  in  calldatelist %}
+                    {% if calldateid == calldate.tcalldateid %}
+                    
+                    {% else %}
+                    
+                    {% endif %}
+                    {% endfor %}
+                </select>
+                &nbsp;
+                <input name="button" type="submit" class="btn" id="button" value="Clear" onclick="del();">
+                &nbsp;Total： Students &nbsp; Attendance： students&nbsp; Rate of attendance:</td>
+              </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td width="14%" height="21" align="center"  background="images/grid-blue-hd.gif" class="borderudr">StuNo</td>
+            <td width="14%" align="center"  background="images/grid-blue-hd.gif" class="borderudr">StuName</td>
+            <td width="11%" align="center"  background="images/grid-blue-hd.gif" class="borderudr">Term</td>
+            <td width="12%" align="center"  background="images/grid-blue-hd.gif" class="borderudr">Course</td>
+            <td width="15%" align="center"  background="images/grid-blue-hd.gif" class="borderud">Sign</td>
+          </tr>
+          <tr  onMouseOver="this.style.background='#E8EFF7'" onMouseOut="this.style.background='#FFFFFF'">
+            <td height="21" align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdd"  onClick="changestate({{callrec.tcallrecid}});"><img src="images/done.gif" width="20" height="20"><img src="images/undo.gif" width="20" height="20"></td>
+          </tr>
+        </table></td>
+        <td width="9"  background="images/tab2.jpg">&nbsp;</td>
+      </tr>
+      <tr>
+        <td colspan="3" background="images/tab.jpg">&nbsp;</td>
+      </tr>
+    </table>
+    </body>
+</html>

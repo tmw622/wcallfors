@@ -1,0 +1,62 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Untitled Document</title>
+        <link href="inc/style.css" rel="stylesheet" type="text/css" />
+        <script language="javascript" src="inc/function.js" ></script>
+        <script language="javascript">        
+            function checksc()
+            {
+                var stuno=getobject("stuno");
+                if(stuno.value=="")
+                {
+                    alert("请输入StuNo！");
+                    stuno.focus();
+                    return false;
+                }else
+                {
+                    var url="/rollcall/stusigninfo/"+stuno.value;
+                    var params="stuno="+encodeURIComponent(stuno.value)+"";
+                    SendPost(params,"get",url,resstu);
+                }
+            }
+            
+            function resstu()
+            {
+                if (XMLHttpReq.readyState==4)
+                {
+                    if (XMLHttpReq.status==200)
+                    {
+                        var result=XMLHttpReq.responseText;
+                        if(result=="no")
+                        {
+                            alert("对不起，您所输入的StuNo不存在，请重新输入！");
+                            return false;
+                        }else if(result=="yes")
+                        {
+                            var stuno=getobject("stuno");
+                            gourl("../callhis?stuno="+stuno.value+"");
+                        }
+                    }else
+                    {
+                        alert("error");
+                    }
+                }
+            }
+        </script>
+
+    </head>
+
+    <body topmargin="0" leftmargin="0" rightmargin="0" bottommargin="0">
+        <table width="350" height="75" border="0"  cellpadding="0" cellspacing="0">
+            <tr>
+                <td width="17%"  align="center">StuNo</td>
+                <td width="83%"><input type="text" name="stuno" id="stuno" /></td>
+            </tr>
+            <tr>
+                <td align="center">&nbsp;</td>
+                <td><input name="button" type="button" class="btnQQ" id="button" value="Submit" onclick="checksc();" /></td>
+            </tr>
+        </table>
+    </body>
+</html>

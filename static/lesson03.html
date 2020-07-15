@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+	<link href="inc/style.css" rel="stylesheet" type="text/css">
+	<script language="javascript" src="inc/function.js" ></script>
+	<script language="javascript">
+
+	function gourl(url)
+		{
+			window.open(url,"test","menubar=no,scrollbars=no,toolbars=no")
+		}
+		
+	function condel()
+	{
+		var info=confirm("this action can't be rollback, are you sure?");
+		alert(info);
+	}
+		
+	function pmt()
+	{
+		var info=prompt("please input a number:");
+		alert(info);
+	}
+		
+	function setvalue(content)
+	{
+		var test=document.getElementById("test");
+		test.value=content;
+	}
+		
+	function getbutton()
+	{
+		var buttonlist=document.getElementsByName("button");
+		alert(buttonlist[2].value);
+	}
+		
+	function writesth()
+	{
+		document.write("hello world!");
+	}
+		
+	function seltext(obj)
+	{
+		obj.select();
+	}
+	
+	function checknull(obj)
+	{
+		
+		if(obj.value=="")
+		{
+			alert("the value of"+obj.name+" is null");
+		}
+	}
+	</script>
+</head>
+
+<body>
+	<div id="bgdiv" class="bgdiv"></div>
+	<table border="0" cellpadding="0" cellspacing="0" class="block" id="divbox" style="position:absolute;display:none;z-index:2000;">
+            <tr>
+                <td colspan="2" class="block-title" id="divtitle" style="float:left;font-size: 12px;">&nbsp;</td>
+                <td align="right"><img src="images/close3.gif" style="cursor:pointer" width="20" height="20" onClick="disdivbox();" >&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="1057" colspan="3" class="block-body"> <iframe src='' id="contentframes" name="contentframes" frameborder='0'></iframe></td>
+            </tr>
+    </table>
+	<p>
+	  <input type="button" value="go" onClick="showbg();">
+</p>
+	<p>
+	  <input type="button" name="button" id="button" value="alert" onClick="alert('hello world!');">
+	  <input type="button" name="button" id="button2" value="confirm" onClick="condel();">
+	  <input type="button" name="button" id="button3" value="prompt" onClick="pmt();">
+	</p>
+	<p><a href="javascript:history.back();">back</a></p>
+	<p><a href="javascript:location.href='http://www.google.com'">google</a></p>
+	<p><a href="javascript:alert(document.form1.test.value);">form</a></p>
+<form id="form1" name="form1" method="post">
+  <label for="test">Text Field:</label>
+  <input type="text" name="test" id="test">
+</form>
+<form id="form2" name="form2" method="post">
+</form>
+<p onClick="setvalue('hello world!')" style="cursor: pointer"> getbyid</p>
+<p onClick="getbutton()" style="cursor: pointer">getbyname</p>
+<p onClick="writesth();" style="cursor: pointer">write</p>
+<p onClick="writesth();" style="cursor: pointer">&nbsp;</p>
+<p>
+  <input type="text" value="helloworld!" onSelect="alert('you have selected the content!');">
+  
+</p>
+<p>
+  <input name="focusevent" type="text" id="focusevent"  onFocus="seltext(this);" value="helloworld!" onBlur="checknull(this);">
+</p>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script language="javascript">
+        function hello(content){
+            alert(content);
+        }
+        //hello("Python");
+        function check()
+        {
+            alert("onclick event activated!");
+        }
+        function SelectText(para)
+        {
+            if(para.value!="")
+               para.select();
+        }
+        function isNull(para)
+        {
+            if(para.value=="")
+               alert("the value of "+para.name+" is empty!");
+        }
+    </script>
+</head>
+<body >
+<form action="/user/loginaction" method="POST">
+    <p>
+      <input type="text" name="username" maxlength="20" id="id_username" onfocus="SelectText(this);" onblur="isNull(this);">
+      <input type="password" name="userpwd"  required id="id_userpwd">
+      <input name="button2" type="submit" id="button2" value="Submit" >
+    </p>
+    <p><a href="lesson03.html">lesson03</a></p>
+    <p>&nbsp;</p>
+</form>
+
+</body>
+
+</html>

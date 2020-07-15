@@ -1,0 +1,180 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="inc/style.css" rel="stylesheet" type="text/css" />
+        <script language="javascript" src="inc/function.js" ></script>
+		<script language="javascript">
+			var stulist="1101:Tom,1002:Jerry,1003:Jack,1004:Jane,1005:Alok";
+			function setstuno()
+			{
+				var stuno=getobject("stuno");
+                var stuname=getobject("stuname");
+				
+                stulist=stulist.split(",");
+
+                var randnum=GetRandNum(0,stulist.length-1);
+				
+                stu=stulist[randnum].split(":");
+				
+                stuno.value=stu[0];
+                stuname.value=stu[1];
+			}
+			
+			function startcall()
+			{
+				this.interval=setInterval(setstuno(),10);
+			}
+		</script>
+
+        <title>无标题文档</title>
+        <style type="text/css">
+            body {
+                margin-left: 2px;
+                margin-top: 2px;
+                margin-right: 2px;
+                margin-bottom: 0px;
+                font-family: "宋体";
+                font-size: 12px;
+            }
+        </style>
+      
+    </head>
+
+    <body style="overflow-y:auto;overflow-x:hidden; overflow-y:auto" onload="loadlist();" >
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="borderall" onClick="disbatbox();">
+      <tr>
+        <td height="20" colspan="3" background="images/tab.jpg"><img src="images/sign.gif" width="20" height="20" align="absmiddle">Sign List</td>
+      </tr>
+      <tr>
+        <td width="9" background="images/tab2.jpg">&nbsp;</td>
+        <td class="borderall"><table  width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF">
+          <tr>
+            <td colspan="6" background="images/backt.jpg"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+              <tr>
+
+                <td height="25" valign="middle">StuNo:
+                <input name="stuno" type="text" id="stuno" size="15">StuName:
+                <input name="stuname" type="text" id="stuname" size="15">
+                <input name="button" type="button" class="btn" id="button" value="Button" onClick="startcall();"></td>
+
+                <td width="527" align="right"><img src="images/scourse.png" width="72" height="16" onClick="window.parent.showfuncbox('change',300,150,'changecourse.html');"  style="cursor:pointer;" ><img src="images/grid-blue-split.gif" alt="" width="2" height="16" /><img src="images/import.png" width="72" height="16" style="cursor:pointer;" onClick="window.parent.showfuncbox('批import',450,130,'batimport.html');"><img src="images/grid-blue-split.gif" alt="" width="2" height="16" /><img src="images/sign.png" width="50" height="16" border="0" style="cursor:pointer;" onClick="window.parent.showfuncbox('roll call',850,630,'scall.html');"><img src="images/grid-blue-split.gif" alt="" width="2" height="16" /><img src="images/history.png" width="72" height="16" border="0" style="cursor:pointer;" onClick="window.parent.showfuncbox('roll call',850,630,'hiscall.html');"></td>
+
+              </tr>
+
+            </table></td>
+          </tr>
+          <tr>
+            <td width="14%" height="21" align="center"  background="images/grid-blue-hd.gif" class="borderudr">StuNo</td>
+            <td width="14%" align="center"  background="images/grid-blue-hd.gif" class="borderudr">StuName</td>
+            <td width="11%" align="center"  background="images/grid-blue-hd.gif" class="borderudr">Term</td>
+            <td width="12%" align="center"  background="images/grid-blue-hd.gif" class="borderudr">Course</td>
+            <td width="9%" align="center"  background="images/grid-blue-hd.gif" class="borderudr">Rate</td>
+            <td width="15%" align="center"  background="images/grid-blue-hd.gif" class="borderud">Management</td>
+          </tr>
+          <tr  onMouseOver="this.style.background='#E8EFF7'" onMouseOut="this.style.background='#FFFFFF'">
+
+            <td height="21" align="center" class="borderdrd">&nbsp;</td>
+
+            <td align="center" class="borderdrd"><a href="javascript:window.parent.showfuncbox('stuinfo',650,400,'studetail.html');">1111</a></td>
+
+            <td align="center" class="borderdrd">&nbsp;</td>
+
+            <td align="center" class="borderdrd">&nbsp;</td>
+
+            <td align="center" class="borderdrd">&nbsp;</td>
+
+            <td align="center" class="borderdrd"><img src="images/delete.gif" width="50" height="16"  style="cursor:pointer;" onClick="del();" /></td>
+
+          
+          </tr>
+          <tr  onMouseOver="this.style.background='#E8EFFF'" onMouseOut="this.style.background='#FFFFFF'">
+            <td height="21" align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+          </tr>
+          <tr  onMouseOver="this.style.background='#E8EFFF'" onMouseOut="this.style.background='#FFFFFF'">
+            <td height="21" align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+          </tr>
+          <tr  onMouseOver="this.style.background='#E8EFFF'" onMouseOut="this.style.background='#FFFFFF'">
+            <td height="21" align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+          </tr>
+          <tr  onMouseOver="this.style.background='#E8EFF7'" onMouseOut="this.style.background='#FFFFFF'">
+            <td height="21" align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+          </tr>
+          <tr  onMouseOver="this.style.background='#E8EFF7'" onMouseOut="this.style.background='#FFFFFF'">
+            <td height="21" align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+          </tr>
+          <tr  onMouseOver="this.style.background='#E8EFFF'" onMouseOut="this.style.background='#FFFFFF'">
+            <td height="21" align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+          </tr>
+          <tr  onMouseOver="this.style.background='#E8EFFF'" onMouseOut="this.style.background='#FFFFFF'">
+            <td height="21" align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+          </tr>
+          <tr  onMouseOver="this.style.background='#E8EFFF'" onMouseOut="this.style.background='#FFFFFF'">
+            <td height="21" align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+          </tr>
+          <tr  onMouseOver="this.style.background='#E8EFF7'" onMouseOut="this.style.background='#FFFFFF'">
+            <td height="21" align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+          </tr>
+          <tr  onMouseOver="this.style.background='#E8EFF7'" onMouseOut="this.style.background='#FFFFFF'">
+            <td height="21" align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdrd">&nbsp;</td>
+          </tr>
+       
+        </table></td>
+        <td width="9"  background="images/tab2.jpg">&nbsp;</td>
+      </tr>
+      <tr>
+        <td colspan="3" background="images/tab.jpg">&nbsp;</td>
+      </tr>
+    </table>
+    </body>
+</html>

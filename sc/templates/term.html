@@ -1,0 +1,98 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="/static/inc/style.css" rel="stylesheet" type="text/css" />
+        <script language="javascript" src="/static/inc/function.js" ></script>
+        <script type="text/javascript" src="/static/inc/build/yahoo/yahoo-min.js" ></script>
+        <script type="text/javascript" src="/static/inc/build/event/event-min.js" ></script>
+        <script type="text/javascript" src="/static/inc/build/dom/dom-min.js"></script>
+        <script type="text/javascript" src="/static/inc/build/dragdrop/dragdrop-debug.js" ></script>
+        <script type="text/javascript" src="/static/inc/build/animation/animation-min.js"></script>
+        <script language="javascript">
+			function delcon()
+			{
+				var con=confirm("the action can't be restore, are you sure to delete it？");
+				if (con==true)
+				{
+					alert("done!");
+				}else
+					alert("no!")
+			}
+			
+            YAHOO.example.DDApp = function() {
+                var dd;
+                return {
+                    init: function() {
+                        dd= new YAHOO.util.DD("divbox");
+                    }
+                }
+            }();
+            YAHOO.util.Event.onDOMReady(YAHOO.example.DDApp.init);
+
+           
+        </script>
+
+        <title>无标题文档</title>
+        <style type="text/css">
+            body {
+                margin-left: 2px;
+                margin-top: 2px;
+                margin-right: 2px;
+                margin-bottom: 0px;
+                font-family: "宋体";
+                font-size: 12px;
+            }
+        </style>
+    </head>
+
+    <body style="overflow-y:auto;overflow-x:hidden; overflow-y:auto" >
+
+    <div id="bgdiv" class="bgdiv"></div>
+        <table border="0" cellpadding="0" cellspacing="0" class="block" id="divbox" style="position:absolute;display:none;z-index:2000;">
+            <tr>
+                <td colspan="2" class="block-title" id="divtitle" style="float:left;font-size: 12px;">&nbsp;</td>
+                <td align="right"><img src="/static/images/close3.gif" style="cursor:pointer" width="20" height="20" onClick="disdivbox();" >&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="1057" colspan="3" class="block-body"> <iframe src='' id="contentframes" name="contentframes" frameborder='0'></iframe></td>
+            </tr>
+        </table>
+
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="borderall" onClick="disbatbox();">
+      <tr>
+        <td height="20" colspan="3" background="/static/images/tab.jpg"><img src="/static/images/termico.png" width="20" height="20" align="absmiddle">Term</td>
+      </tr>
+      <tr>
+        <td width="9" background="/static/images/tab2.jpg">&nbsp;</td>
+        <td class="borderall"><table  width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF">
+          <tr>
+            <td colspan="2" background="/static/images/backt.jpg"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <form action="term/create" method="POST">
+                    {% csrf_token %}
+                <tr>
+                <td height="25" valign="middle">&nbsp;</td>
+                <td width="527" align="right">Term：
+                  <input name="termname" type="text" class="inputbox1" id="termname">
+                <input name="button" type="submit" class="btn" id="button" value="Submit">&nbsp;
+                </td>
+              </tr>
+                    </form>
+            </table></td>
+          </tr>
+          <tr>
+            <td width="72%" height="21" align="center"  background="/static/images/grid-blue-hd.gif" class="borderudr">Term</td>
+            <td width="28%" align="center"  background="/static/images/grid-blue-hd.gif" class="borderud">Management</td>
+          </tr>
+          <tr >
+            <td height="21" align="center" class="borderdrd">&nbsp;</td>
+            <td align="center" class="borderdd"><img src="/static/images/modify.gif" width="38" height="14"  onClick="window.parent.alert('Edit',330,100,'termedit.html');"  style="cursor:pointer;"  /><img src="/static/images/delete.gif" width="38" height="14"   style="cursor:pointer;" onClick="delcon();" /></td>
+          </tr>
+        </table></td>
+        <td width="9"  background="/static/images/tab2.jpg">&nbsp;</td>
+      </tr>
+      <tr>
+        <td colspan="3" background="/static/images/tab.jpg">&nbsp;</td>
+      </tr>
+    </table>
+    </body>
+</html>
