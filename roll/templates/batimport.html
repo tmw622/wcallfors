@@ -1,13 +1,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link href="inc/style.css" rel="stylesheet" type="text/css" />
-        <script language="javascript" src="inc/function.js" ></script>
-        <script type="text/javascript" src="inc/build/yahoo/yahoo-min.js" ></script>
-        <script type="text/javascript" src="inc/build/event/event-min.js" ></script>
-        <script type="text/javascript" src="inc/build/dom/dom-min.js"></script>
-        <script type="text/javascript" src="inc/build/dragdrop/dragdrop-debug.js" ></script>
-        <script type="text/javascript" src="inc/build/animation/animation-min.js"></script>
+        <link href="/static/inc/style.css" rel="stylesheet" type="text/css" />
+        <script language="javascript" src="/static/inc/function.js" ></script>
+        <script type="text/javascript" src="/static/inc/build/yahoo/yahoo-min.js" ></script>
+        <script type="text/javascript" src="/static/inc/build/event/event-min.js" ></script>
+        <script type="text/javascript" src="/static/inc/build/dom/dom-min.js"></script>
+        <script type="text/javascript" src="/static/inc/build/dragdrop/dragdrop-debug.js" ></script>
+        <script type="text/javascript" src="/static/inc/build/animation/animation-min.js"></script>
         <script language="javascript">
             YAHOO.example.DDApp = function() {
                 var dd;
@@ -40,13 +40,14 @@
         <table border="0" cellpadding="0" cellspacing="0" class="block" id="divbox" style="position:absolute;display:none;z-index:2000;">
             <tr>
                 <td colspan="2" class="block-title" id="divtitle" style="float:left;font-size: 12px;">&nbsp;</td>
-                <td align="right"><img src="images/close3.gif" style="cursor:pointer" width="20" height="20" onClick="disdivbox();" >&nbsp;</td>
+                <td align="right"><img src="/static/images/close3.gif" style="cursor:pointer" width="20" height="20" onClick="disdivbox();" >&nbsp;</td>
             </tr>
             <tr>
                 <td width="1057" colspan="3" class="block-body"> <iframe src='' id="contentframes" name="contentframes" frameborder='0'></iframe></td>
             </tr>
         </table>
-		<form method="post" enctype="multipart/form-data">
+		<form method="post" action="/roll/importstu"  enctype="multipart/form-data">
+            {% csrf_token %}
     <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="borderall">
       <tr >
         <td  width="23%" height="30" align="right" bgcolor="#E8EFF7"  class="borderr">Please select a file：</td>

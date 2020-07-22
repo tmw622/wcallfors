@@ -86,16 +86,17 @@
       <tr>
         <td width="9" background="/static/images/tab2.jpg">&nbsp;</td>
         <td class="borderall"><form action="/users/LoginAction" method="POST">
+            {% csrf_token %}
           <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
       <tr>
         <td height="30" align="right" bgcolor="#E8EFF7"  class="borderall">Username：</td>
         <td class="borderudr">&nbsp;
-        <input name="username" type="text" class="inputbox1" id="username"></td>
+        {{userform.username}}</td>
       </tr>
       <tr >
         <td height="30" align="right" bgcolor="#E8EFF7"  class="borderlrd">Password：</td>
         <td class="borderrd">&nbsp;
-        <input name="userpwd" type="password" class="inputbox1" id="userpwd"></td>
+        {{userform.userpwd}}</td>
       </tr>
 
       <tr >

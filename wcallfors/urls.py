@@ -20,5 +20,6 @@ import users.views as userview
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/',include('users.urls')),
-    path('sc/',include('sc.urls'))
+    path('sc/',include('sc.urls')),
+    path('roll/',include('roll.urls'))
 ]

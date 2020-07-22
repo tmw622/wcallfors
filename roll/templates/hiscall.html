@@ -1,12 +1,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link href="inc/style.css" rel="stylesheet" type="text/css" />
-        <script language="javascript" src="inc/function.js" ></script>
+        <link href="/static/inc/style.css" rel="stylesheet" type="text/css" />
+        <script language="javascript" src="/static/inc/function.js" ></script>
         <script language="javascript">
             function changedate(dateid)
             {
-                url="/rollcall/stusignlist/{{scid}}/"+dateid;
+                url="/roll/hiscall/"+dateid;
                 gourl(url);
             }
 
@@ -44,52 +44,57 @@
     <body style="overflow-y:auto;overflow-x:hidden; overflow-y:auto" >
     <table width="100%" border="0" cellpadding="0" cellspacing="0" class="borderall" onClick="disbatbox();">
       <tr>
-        <td height="20" colspan="3" background="images/tab.jpg"><img src="images/hisico.png" width="14" height="16" align="absmiddle">History</td>
+        <td height="20" colspan="3" background="/static/images/tab.jpg"><img src="/static/images/hisico.png" width="14" height="16" align="absmiddle">History</td>
       </tr>
       <tr>
-        <td width="9" background="images/tab2.jpg">&nbsp;</td>
+        <td width="9" background="/static/images/tab2.jpg">&nbsp;</td>
         <td class="borderall"><table  width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF">
           <tr>
-            <td colspan="5" background="images/backt.jpg"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <td colspan="5" background="/static/images/backt.jpg"><table width="100%" border="0" cellspacing="0" cellpadding="0">
               <tr>
                 <td width="527" height="25">Date：
                   <select name="calldateid" class="inputbox1" id="calldateid" onchange="changedate(this.value)">
-                    {% if calldateid == 0 %}
-                    <option value="0">select a date</option>
-                    {% endif %}
                     {% for calldate  in  calldatelist %}
-                    {% if calldateid == calldate.tcalldateid %}
-                    
+                    {% if calldateid == calldate.calldateid %}
+                    <option value="{{calldateid}}" selected>{{calldate.calldate}}</option>
                     {% else %}
-                    
+                    <option value="{{calldate.calldateid}}">{{calldate.calldate}}</option>
                     {% endif %}
                     {% endfor %}
                 </select>
                 &nbsp;
                 <input name="button" type="submit" class="btn" id="button" value="Clear" onclick="del();">
-                &nbsp;Total： Students &nbsp; Attendance： students&nbsp; Rate of attendance:</td>
+                Total：{{ totalstu }} Students &nbsp; Attendance：{{attend }} students&nbsp; Rate of attendance：{{rate}}</td>
               </tr>
             </table></td>
           </tr>
           <tr>
-            <td width="14%" height="21" align="center"  background="images/grid-blue-hd.gif" class="borderudr">StuNo</td>
-            <td width="14%" align="center"  background="images/grid-blue-hd.gif" class="borderudr">StuName</td>
-            <td width="11%" align="center"  background="images/grid-blue-hd.gif" class="borderudr">Term</td>
-            <td width="12%" align="center"  background="images/grid-blue-hd.gif" class="borderudr">Course</td>
-            <td width="15%" align="center"  background="images/grid-blue-hd.gif" class="borderud">Sign</td>
+            <td width="14%" height="21" align="center"  background="/static/images/grid-blue-hd.gif" class="borderudr">StuNo</td>
+            <td width="14%" align="center"  background="/static/images/grid-blue-hd.gif" class="borderudr">StuName</td>
+            <td width="11%" align="center"  background="/static/images/grid-blue-hd.gif" class="borderudr">Term</td>
+            <td width="12%" align="center"  background="/static/images/grid-blue-hd.gif" class="borderudr">Course</td>
+            <td width="15%" align="center"  background="/static/images/grid-blue-hd.gif" class="borderud">Sign</td>
           </tr>
+            {% for stu in callreclist %}
           <tr  onMouseOver="this.style.background='#E8EFF7'" onMouseOut="this.style.background='#FFFFFF'">
-            <td height="21" align="center" class="borderdrd">&nbsp;</td>
-            <td align="center" class="borderdrd">&nbsp;</td>
-            <td align="center" class="borderdrd">&nbsp;</td>
-            <td align="center" class="borderdrd">&nbsp;</td>
-            <td align="center" class="borderdd"  onClick="changestate({{callrec.tcallrecid}});"><img src="images/done.gif" width="20" height="20"><img src="images/undo.gif" width="20" height="20"></td>
+            <td height="21" align="center" class="borderdrd">{{stu.student.stuno}}</td>
+            <td align="center" class="borderdrd">{{ stu.student.stuname }}</td>
+            <td align="center" class="borderdrd">{{ stu.calldate.selectcourse.term.termname }}</td>
+            <td align="center" class="borderdrd">{{ stu.calldate.selectcourse.course.coursename }}</td>
+            <td align="center" class="borderdd"  onClick="changestate({{callrec.tcallrecid}});">
+                {% if stu.iscall == 1 %}
+                <img src="/static/images/done.gif" width="20" height="20">
+                {% else %}
+                <img src="/static/images/undo.gif" width="20" height="20">
+                {% endif %}
+            </td>
           </tr>
+            {% endfor %}
         </table></td>
-        <td width="9"  background="images/tab2.jpg">&nbsp;</td>
+        <td width="9"  background="/static/images/tab2.jpg">&nbsp;</td>
       </tr>
       <tr>
-        <td colspan="3" background="images/tab.jpg">&nbsp;</td>
+        <td colspan="3" background="/static/images/tab.jpg">&nbsp;</td>
       </tr>
     </table>
     </body>

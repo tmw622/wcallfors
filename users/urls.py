@@ -5,7 +5,6 @@ app_name='users'
 
 urlpatterns=[
     path('login', views.LoginView),
-    path('<int:userid>',views.LoginInfo),
-    path('<slug:username>/<slug:userpwd>',views.LoginInfo)
-
+    path('LoginAction',views.LoginAction),
+    path('logout',views.logout)
 ]

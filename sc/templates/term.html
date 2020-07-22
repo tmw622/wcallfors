@@ -9,12 +9,12 @@
         <script type="text/javascript" src="/static/inc/build/dragdrop/dragdrop-debug.js" ></script>
         <script type="text/javascript" src="/static/inc/build/animation/animation-min.js"></script>
         <script language="javascript">
-			function delcon()
+			function delcon(termid)
 			{
 				var con=confirm("the action can't be restore, are you sure to delete it？");
 				if (con==true)
 				{
-					alert("done!");
+					location.href='/sc/term/del/'+termid;
 				}else
 					alert("no!")
 			}
@@ -83,10 +83,12 @@
             <td width="72%" height="21" align="center"  background="/static/images/grid-blue-hd.gif" class="borderudr">Term</td>
             <td width="28%" align="center"  background="/static/images/grid-blue-hd.gif" class="borderud">Management</td>
           </tr>
+        {% for term in termlist %}
           <tr >
-            <td height="21" align="center" class="borderdrd">&nbsp;</td>
-            <td align="center" class="borderdd"><img src="/static/images/modify.gif" width="38" height="14"  onClick="window.parent.alert('Edit',330,100,'termedit.html');"  style="cursor:pointer;"  /><img src="/static/images/delete.gif" width="38" height="14"   style="cursor:pointer;" onClick="delcon();" /></td>
+            <td height="21" align="center" class="borderdrd">{{term.termname}}</td>
+            <td align="center" class="borderdd"><img src="/static/images/modify.gif" width="38" height="14"  onClick="window.parent.showfuncbox('Edit',330,100,'/sc/term/{{term.termid}}');"  style="cursor:pointer;"  /><img src="/static/images/delete.gif" width="38" height="14"   style="cursor:pointer;" onClick="delcon({{term.termid}});" /></td>
           </tr>
+            {% endfor %}
         </table></td>
         <td width="9"  background="/static/images/tab2.jpg">&nbsp;</td>
       </tr>
