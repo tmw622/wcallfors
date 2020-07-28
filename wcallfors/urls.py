@@ -17,9 +17,12 @@ from django.contrib import admin
 from django.urls import path, include
 import users.views as userview
 
+
 urlpatterns = [
+    path('',userview.LoginView),
     path('admin/', admin.site.urls),
     path('users/',include('users.urls')),
     path('sc/',include('sc.urls')),
-    path('roll/',include('roll.urls'))
+    path('roll/',include('roll.urls')),
+    path('captcha/',include('captcha.urls'))
 ]

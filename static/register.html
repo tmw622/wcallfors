@@ -4,6 +4,50 @@
         <title>Untitled Document</title>
         <link href="inc/style.css" rel="stylesheet" type="text/css" />
         <script language="javascript" src="inc/function.js" ></script>
+		<script language="javascript">
+		function register()
+			{
+				var stuno=getobject("stuno");
+				if(stuno.value=="")
+				{
+					alert("Please input stuno!");
+					stuno.focus();
+					return false;
+				}else{
+					var url='/roll/stusign/'+stuno.value;
+					var params="stuno="+encodeURIComponent(stuno.value)+"";
+					SendPost(params,"get",url,resstu)
+				}
+			}
+			
+			function resstu()
+			{
+				
+				if (XMLHttpReq.readyState==4)
+                {
+                    if (XMLHttpReq.status==200)
+                    {
+                        var result=XMLHttpReq.responseText;
+
+                        if(result=="no")
+                        {
+                            alert("The StuNo doesn't exist!");
+							return false;
+                        }else if(result=="ok")
+						{
+							alert('sign successfully');
+							
+						}else if(result=="end")
+						{
+							alert('not open');	
+						}
+                    }else
+                    {
+                        alert("Erro!");
+                    }
+                }
+			}
+		</script>
        
     </head>
 

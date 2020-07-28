@@ -21,6 +21,7 @@ def LoginAction(request):
             courseid = request.POST.get('course')
 
             user = TUser.objects.filter(username=username,userpwd=userpwd)
+            print(termid)
             if len(user) > 0 :
                 request.session['username'] = user[0].username
                 request.session['userid'] = user[0].userid
@@ -30,9 +31,12 @@ def LoginAction(request):
                 course=Tcourse.objects.get(courseid=courseid)
                 sc=TSelectCourse.objects.get(term=term,course=course)
                 request.session['scid'] = sc.scid
+                print(sc)
                 return render(request, 'index.html')
             else:
                 return HttpResponseRedirect('/users/login')
+        else:
+            return HttpResponseRedirect('/users/login')
     else:
         return HttpResponseRedirect('/users/login')
 

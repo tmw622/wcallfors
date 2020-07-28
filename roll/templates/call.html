@@ -86,7 +86,24 @@
         <td width="9"  background="/static/images/tab2.jpg">&nbsp;</td>
       </tr>
       <tr>
-        <td colspan="3" background="/static/images/tab.jpg">&nbsp;</td>
+        <td colspan="3" background="/static/images/tab.jpg" align="center">
+            {% if stulist.has_previous %}
+            <a href="?page={{stulist.previous_page_number}}">Previous</a>
+            {%endif%}
+            &nbsp;
+            {% for page_num in stulist.paginator.page_range %}
+            {% if page_num == stulist.number %}
+            <a href="javascript:;">
+                {{page_num}}
+            </a>
+            {%else%}
+            <a href="?page={{page_num}}">{{page_num}}</a>
+            {%endif%}
+            {%endfor%}
+            {% if stulist.has_next %}
+            <a href="?page={{stulist.next_page_number}}">Next</a>
+            {%endif%}
+        </td>
       </tr>
     </table>
     </body>

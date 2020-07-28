@@ -48,7 +48,19 @@
 			        }
 			    }
 			}
-
+    $(function () {
+        $('.captcha').css({
+            'cursor': 'pointer'
+        });
+        $('.captcha').click(function () {
+            console.log('click');
+            $.get("{% url 'captcha-refresh' %}",
+                function (result) {
+                    $('.captcha').attr('src', result['image_url']);
+                    $('#id_captcha_0').val(result['key'])
+                });
+        });
+    })
 
         </script>
 
@@ -138,6 +150,7 @@
         <td  width="33%" height="30" align="right" bgcolor="#E8EFF7"  class="borderlrd">verify：</td>
 
         <td width="67%" class="borderrd">&nbsp;
+             {{ userform.captcha }}
 
         </td>
 

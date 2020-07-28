@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'users',
     'sc',
-    'roll'
+    'roll',
+    'captcha'
 ]
 
 MIDDLEWARE = [
@@ -131,3 +132,15 @@ STATICFILES_DIRS=(
 
 X_FRAME_OPTIONS = 'ALLOWALL url'
 
+CAPTCHA_IAMGE_SIZE=(80,20)
+CAPTCHA_LENGTH=4
+CAPTCHA_TIMEOUT=10
+
+CAPTCHA_OUTPUT_FORMAT='%(text_field)s %(image)s %(hidden_field)s'
+CAPTCHA_NOISE_FUNCTIONS=(
+    'captcha.helpers.noise_null',
+    'captcha.helpers.noise_arcs',
+    'captcha.helpers.noise_dots'
+)
+
+CAPTCHA_CHALLENGE_FUNCT='captcha.helpers.math_challenge'

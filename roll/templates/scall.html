@@ -15,7 +15,7 @@
                 var stopbtn=getobject("stopbtn");
                 stopbtn.disabled=false;
                 
-                var url="/rollcall/startcall/"+calldateid+"";
+                var url="/roll/startcall/"+calldateid+"";
                 SendPost(null,"get",url,startres);
             }
             
@@ -29,7 +29,7 @@
 
                         if(result=="success")
                         {
-                            istartcall=setInterval("loadcall()",8000);
+                            istartcall=setInterval("loadcall()",800);
                         }
                     }else
                     {
@@ -40,7 +40,7 @@
             
             function loadcall()
             {
-                var url="/rollcall/loadsign/"+calldateid+"";
+                var url="/roll/loadsign/"+calldateid+"";
                 SendPost(null,"get",url,loadres);
             }
             
@@ -106,7 +106,7 @@
                 var stopbtn=getobject("stopbtn");
                 stopbtn.disabled=true;
                 
-                var url="/rollcall/stopcall";
+                var url="/roll/stopcall";
                 SendPost(null,"get",url,stopres);
             }
             
